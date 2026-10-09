@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f4ef">
+  <meta name="theme-color" content="#172a42">
   <meta name="description" content="أسئلة لطيفة وممتعة تقرّبكم من بعض. اختاروا تصنيف وابدأوا اللعب سوا.">
   <title>بيننا | أسئلة للكابلز</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #1c2d43;
-      --muted: #748092;
-      --gold: #b18a49;
-      --gold-dark: #8e6d36;
+      --ink: #192b42;
+      --muted: #79879a;
+      --gold: #bd984f;
+      --gold-dark: #88672f;
       --gold-soft: #f5f0e6;
       --blue-soft: #edf1f5;
-      --line: #e9e5dc;
-      --surface: rgba(255, 255, 255, .92);
-      --shadow: 0 26px 80px rgba(28, 45, 67, .12);
+      --line: #e5dfd2;
+      --surface: rgba(255, 253, 248, .98);
+      --shadow: 0 28px 85px rgba(5, 15, 28, .35);
     }
 
     * { box-sizing: border-box; }
@@ -27,12 +27,12 @@
       min-height: 100vh;
       margin: 0;
       padding: 26px 20px 48px;
-      color: var(--ink);
+      color: #f8f5ee;
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       background:
-        radial-gradient(ellipse at 7% 8%, rgba(207, 185, 139, .2), transparent 29rem),
-        radial-gradient(ellipse at 93% 76%, rgba(178, 192, 207, .25), transparent 33rem),
-        linear-gradient(145deg, #fbfaf7, #f6f4ef 55%, #f1f3f4);
+        radial-gradient(ellipse at 7% 8%, rgba(189, 152, 79, .2), transparent 29rem),
+        radial-gradient(ellipse at 93% 76%, rgba(72, 102, 137, .42), transparent 33rem),
+        linear-gradient(145deg, #101d2e, #1a304b 55%, #243a53);
     }
 
     button { font: inherit; }
@@ -53,13 +53,13 @@
       height: 42px;
       place-items: center;
       border-radius: 15px;
-      color: white;
-      background: linear-gradient(145deg, #bd9b60, #98743a);
-      box-shadow: 0 8px 20px rgba(142, 109, 54, .22);
+      color: #172a42;
+      background: linear-gradient(145deg, #e4c77e, #bd984f);
+      box-shadow: 0 8px 22px rgba(189, 152, 79, .3);
       font-size: 20px;
     }
     .brand-name { font-size: 17px; letter-spacing: -.3px; }
-    .top-note { color: var(--muted); font-size: 13px; }
+    .top-note { color: #c5ced8; font-size: 13px; }
 
     .intro { margin-bottom: 31px; text-align: center; }
     .eyebrow {
@@ -71,14 +71,14 @@
       border: 1px solid #e8ddc7;
       border-radius: 99px;
       color: var(--gold-dark);
-      background: rgba(255, 255, 255, .82);
+      background: #fffaf0;
       font-size: 12px;
       font-weight: 700;
       box-shadow: 0 5px 18px rgba(28, 45, 67, .06);
     }
-    h1 { margin: 0; font-size: clamp(32px, 6vw, 52px); letter-spacing: -1.8px; line-height: 1.2; }
-    h1 span { color: var(--gold); }
-    .intro p { margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    h1 { margin: 0; color: #fffaf0; font-size: clamp(32px, 6vw, 52px); letter-spacing: -1.8px; line-height: 1.2; }
+    h1 span { color: #e1bd69; }
+    .intro p { margin: 13px 0 0; color: #c5ced8; font-size: 16px; line-height: 1.8; }
     .intro-stats {
       display: flex;
       justify-content: center;
@@ -90,17 +90,17 @@
       align-items: center;
       gap: 7px;
       padding: 8px 12px;
-      border: 1px solid rgba(233, 229, 220, .9);
+      border: 1px solid rgba(225, 189, 105, .28);
       border-radius: 99px;
-      color: #59677a;
-      background: rgba(255, 255, 255, .7);
+      color: #e7eaf0;
+      background: rgba(255, 255, 255, .08);
       font-size: 12px;
     }
-    .intro-stat strong { color: var(--gold-dark); font-size: 13px; }
+    .intro-stat strong {     color: #e1bd69; font-size: 13px; }
 
     .game {
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .95);
+      border: 1px solid rgba(225, 189, 105, .32);
       border-radius: 30px;
       background: var(--surface);
       box-shadow: var(--shadow);
@@ -110,7 +110,7 @@
       display: block;
       height: 4px;
       content: "";
-      background: linear-gradient(90deg, #d8c39a, #b18a49 48%, #d8c39a);
+      background: linear-gradient(90deg, #a77e36, #e1bd69 48%, #a77e36);
     }
 
     .categories { padding: 25px 30px 23px; border-bottom: 1px solid var(--line); }
@@ -136,8 +136,8 @@
     .chip[aria-pressed="true"] {
       border-color: var(--gold);
       color: white;
-      background: linear-gradient(135deg, #263c57, #172a42);
-      box-shadow: 0 6px 15px rgba(28, 45, 67, .18);
+      background: linear-gradient(135deg, #304966, #1a304b);
+      box-shadow: 0 6px 15px rgba(18, 35, 54, .2);
     }
     .chip-count {
       min-width: 21px;
@@ -168,10 +168,10 @@
       height: 48px;
       place-items: center;
       margin: 17px auto 8px;
-      border: 1px solid #e9dfcd;
+      border: 1px solid #e8d9b8;
       border-radius: 17px;
-      color: var(--gold);
-      background: linear-gradient(145deg, #fbf8f1, #fff);
+      color: var(--gold-dark);
+      background: linear-gradient(145deg, #f7edda, #fffaf0);
       box-shadow: 0 7px 20px rgba(142, 109, 54, .09);
       font-size: 23px;
     }
@@ -206,10 +206,11 @@
     .button:focus-visible, .chip:focus-visible { outline: 3px solid #cbb78f; outline-offset: 3px; }
     .button-primary {
       color: white;
-      background: linear-gradient(135deg, #263c57, #172a42);
-      box-shadow: 0 9px 20px rgba(28, 45, 67, .2);
+      color: #172a42;
+      background: linear-gradient(135deg, #e4c77e, #bd984f);
+      box-shadow: 0 9px 22px rgba(142, 103, 40, .28);
     }
-    .button-primary:hover { box-shadow: 0 12px 24px rgba(28, 45, 67, .28); }
+    .button-primary:hover { box-shadow: 0 12px 24px rgba(189, 152, 79, .38); }
     .button-secondary { border-color: var(--line); color: #43536a; background: white; }
     .button-secondary:hover { border-color: #cbb78f; background: #fbf9f4; }
     .button-game { color: var(--gold-dark); background: var(--gold-soft); }
