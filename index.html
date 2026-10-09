@@ -162,7 +162,7 @@
       font-weight: 700;
       letter-spacing: .1px;
     }
-    .progress { color: var(--muted); font-size: 12px; }
+    .progress { color: var(--muted); font-size: 12px; } .question-number { padding: 6px 10px; border: 1px solid #e8d9b8; border-radius: 99px; color: var(--gold-dark); background: #fffaf0; font-size: 12px; font-weight: 700; }
     .heart {
       display: grid;
       width: 48px;
@@ -279,7 +279,7 @@
 
       <div class="question-area" aria-live="polite">
         <div class="question-meta">
-          <span class="category-label" id="category-label"></span>
+          .progress { color: var(--muted); font-size: 12px; } .question-number { padding: 6px 10px; border: 1px solid #e8d9b8; border-radius: 99px; color: var(--gold-dark); background: #fffaf0; font-size: 12px; font-weight: 700; }
           <span class="progress" id="progress"></span>
         </div>
         <div class="heart" aria-hidden="true">♡</div>
@@ -718,7 +718,7 @@
     const categoryNames = ["الكل", ...Object.keys(questions)];
     const totalQuestionCount = Object.values(questions).reduce((total, items) => total + items.length, 0);
     const categoryContainer = document.getElementById("categories");
-    const categoryLabel = document.getElementById("category-label");
+    <span class="category-label" id="category-label"></span> <span class="question-number" id="question-number"></span>
     const questionElement = document.getElementById("question");
     const progressElement = document.getElementById("progress");
     const promptElement = document.getElementById("prompt");
@@ -727,7 +727,7 @@
     let selectedCategory = "الكل";
     let currentQuestion = "";
     let roundQuestions = [];
-    let roundIndex = -1;
+    const categoryLabel = document.getElementById("category-label"); const questionNumberElement = document.getElementById("question-number");
     document.getElementById("total-count").textContent = formatNumber(totalQuestionCount);
 
     function randomItem(items) {
@@ -764,7 +764,7 @@
           roundIndex = -1;
           roundButton.textContent = "✦ ابدأوا جولة ٥ أسئلة";
           promptElement.textContent = "مفيش إجابة صح أو غلط — اسمعوا بعض وبس.";
-          statusElement.textContent = "";
+          categoryLabel.textContent = item.category; let usageStorageWarning = ""; let usage = null; questionNumberElement.textContent = usage ? `السؤال رقم ${formatNumber(usage.questionNumber)}` : "";
           renderCategories();
           showRandomQuestion();
         });
@@ -772,12 +772,12 @@
       });
     }
 
-    function displayQuestion(item, progressText = "") {
+    let roundIndex = -1; const questionUsageStorageKey = "baynina-question-usage-v1"; let questionUseCounts = {}; statusElement.textContent = usage ? usage.previousCount > 0 ? `تم استخدام السؤال ده قبل كده ${formatNumber(usage.previousCount)} مرة — دي المرة رقم ${formatNumber(usage.count)}.` : "اتسجل استخدام السؤال لأول مرة." : ""; if (usageStorageWarning) statusElement.textContent += ` ${usageStorageWarning}`; try { const savedUsage = window.localStorage.getItem(questionUsageStorageKey); if (savedUsage) { const parsedUsage = JSON.parse(savedUsage); if (!parsedUsage || typeof parsedUsage !== "object" || Array.isArray(parsedUsage) || Object.entries(parsedUsage).some(([number, count]) => !/^\d+$/.test(number) || !Number.isInteger(count) || count < 0)) throw new Error("سجل استخدام الأسئلة المحفوظ غير صالح."); questionUseCounts = parsedUsage; } } catch (error) { console.error("تعذر تحميل سجل استخدام الأسئلة:", error); usageStorageWarning = "تعذر قراءة سجل الاستخدام المحفوظ."; }
       currentQuestion = item.text;
       questionElement.textContent = item.text;
-      categoryLabel.textContent = item.category;
+      function getQuestionNumber(item) { let firstQuestionNumber = 1; for (const [category, items] of Object.entries(questions)) { const questionIndex = category === item.category ? items.indexOf(item.text) : -1; if (questionIndex >= 0) return firstQuestionNumber + questionIndex; firstQuestionNumber += items.length; } return null; } function recordQuestionUsage(item) { const questionNumber = getQuestionNumber(item); if (questionNumber === null) return null; const key = String(questionNumber); const previousCount = questionUseCounts[key] || 0; questionUseCounts[key] = previousCount + 1; try { window.localStorage.setItem(questionUsageStorageKey, JSON.stringify(questionUseCounts)); } catch (error) { console.error("تعذر حفظ سجل استخدام الأسئلة:", error); usageStorageWarning = "تعذر حفظ سجل الاستخدام على هذا المتصفح."; } return { questionNumber, previousCount, count: questionUseCounts[key] }; } function displayQuestion(item, progressText = "") {
       progressElement.textContent = progressText;
-      statusElement.textContent = "";
+      categoryLabel.textContent = item.category; let usageStorageWarning = ""; let usage = null; questionNumberElement.textContent = usage ? `السؤال رقم ${formatNumber(usage.questionNumber)}` : "";
     }
 
     function formatNumber(number) {
