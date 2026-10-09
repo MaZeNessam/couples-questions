@@ -15,9 +15,9 @@
       --pink-dark: #bd3c70;
       --pink-soft: #fff0f5;
       --purple: #7457a6;
-      --line: #f0e5ed;
-      --surface: rgba(255, 255, 255, .88);
-      --shadow: 0 24px 80px rgba(92, 55, 86, .12);
+      --line: #eee4eb;
+      --surface: rgba(255, 255, 255, .92);
+      --shadow: 0 26px 80px rgba(72, 43, 69, .12);
     }
 
     * { box-sizing: border-box; }
@@ -26,24 +26,24 @@
       min-width: 320px;
       min-height: 100vh;
       margin: 0;
-      padding: 28px 20px 44px;
+      padding: 26px 20px 48px;
       color: var(--ink);
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       background:
-        radial-gradient(ellipse at 8% 12%, rgba(255, 201, 222, .5), transparent 31rem),
-        radial-gradient(ellipse at 92% 80%, rgba(220, 211, 255, .46), transparent 34rem),
-        #fff9fc;
+        radial-gradient(ellipse at 7% 8%, rgba(255, 201, 222, .48), transparent 29rem),
+        radial-gradient(ellipse at 93% 76%, rgba(220, 211, 255, .42), transparent 33rem),
+        linear-gradient(145deg, #fffafd, #fff7fa 55%, #fbf8ff);
     }
 
     button { font: inherit; }
 
-    .page { width: min(100%, 860px); margin: 0 auto; }
+    .page { width: min(100%, 880px); margin: 0 auto; }
 
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 58px;
+      margin-bottom: 54px;
     }
 
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
@@ -61,7 +61,7 @@
     .brand-name { font-size: 17px; letter-spacing: -.3px; }
     .top-note { color: var(--muted); font-size: 13px; }
 
-    .intro { margin-bottom: 30px; text-align: center; }
+    .intro { margin-bottom: 31px; text-align: center; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -71,41 +71,85 @@
       border: 1px solid #f5dce7;
       border-radius: 99px;
       color: var(--pink-dark);
-      background: rgba(255, 255, 255, .72);
+      background: rgba(255, 255, 255, .82);
       font-size: 12px;
       font-weight: 700;
+      box-shadow: 0 5px 18px rgba(146, 83, 117, .06);
     }
     h1 { margin: 0; font-size: clamp(32px, 6vw, 52px); letter-spacing: -1.8px; line-height: 1.2; }
     .intro p { margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .intro-stats {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 19px;
+    }
+    .intro-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border: 1px solid rgba(238, 228, 235, .88);
+      border-radius: 99px;
+      color: #66576d;
+      background: rgba(255, 255, 255, .7);
+      font-size: 12px;
+    }
+    .intro-stat strong { color: var(--pink-dark); font-size: 13px; }
 
     .game {
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .9);
-      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, .95);
+      border-radius: 30px;
       background: var(--surface);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
     }
+    .game::before {
+      display: block;
+      height: 4px;
+      content: "";
+      background: linear-gradient(90deg, #b39ae5, #e989ad 48%, #f3bb9b);
+    }
 
-    .categories { padding: 25px 28px 22px; border-bottom: 1px solid var(--line); }
+    .categories { padding: 25px 30px 23px; border-bottom: 1px solid var(--line); }
     .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .section-heading h2 { margin: 0; font-size: 15px; }
     .section-heading span { color: var(--muted); font-size: 12px; }
     .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
     .chip {
-      padding: 9px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
       border: 1px solid var(--line);
       border-radius: 99px;
       color: #695b70;
       background: #fff;
       cursor: pointer;
       font-size: 13px;
-      transition: color .18s, background .18s, border-color .18s, transform .18s;
+      font-weight: 650;
+      transition: color .18s, background .18s, border-color .18s, transform .18s, box-shadow .18s;
     }
     .chip:hover { transform: translateY(-1px); border-color: #e8bdd0; }
-    .chip[aria-pressed="true"] { border-color: var(--pink); color: white; background: var(--pink); }
+    .chip[aria-pressed="true"] {
+      border-color: var(--pink);
+      color: white;
+      background: linear-gradient(135deg, #e86f99, #ce4e85);
+      box-shadow: 0 6px 15px rgba(217, 79, 131, .2);
+    }
+    .chip-count {
+      min-width: 21px;
+      padding: 2px 5px;
+      border-radius: 99px;
+      color: #927e94;
+      background: #f7f2f6;
+      font-size: 10px;
+      text-align: center;
+    }
+    .chip[aria-pressed="true"] .chip-count { color: #fff; background: rgba(255, 255, 255, .2); }
 
-    .question-area { padding: 34px 36px 30px; text-align: center; }
+    .question-area { padding: 37px 38px 31px; text-align: center; }
     .question-meta { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 28px; }
     .category-label {
       padding: 6px 11px;
@@ -114,12 +158,25 @@
       background: #f3efff;
       font-size: 12px;
       font-weight: 700;
+      letter-spacing: .1px;
     }
     .progress { color: var(--muted); font-size: 12px; }
-    .heart { margin: 17px 0 5px; color: #e785a8; font-size: 23px; }
+    .heart {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      margin: 17px auto 8px;
+      border: 1px solid #f6e3eb;
+      border-radius: 17px;
+      color: #df739a;
+      background: linear-gradient(145deg, #fff6f9, #fff);
+      box-shadow: 0 7px 20px rgba(186, 107, 141, .09);
+      font-size: 23px;
+    }
     .question {
       max-width: 660px;
-      min-height: 100px;
+      min-height: 112px;
       display: grid;
       place-items: center;
       margin: 0 auto;
@@ -128,7 +185,7 @@
       letter-spacing: -.65px;
       line-height: 1.7;
     }
-    .prompt { margin: 5px 0 23px; color: var(--muted); font-size: 13px; }
+    .prompt { margin: 7px 0 25px; color: var(--muted); font-size: 13px; line-height: 1.7; }
     .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
     .button {
       min-height: 46px;
@@ -142,7 +199,7 @@
       cursor: pointer;
       font-size: 14px;
       font-weight: 700;
-      transition: transform .18s, box-shadow .18s, background .18s;
+      transition: transform .18s, box-shadow .18s, background .18s, border-color .18s;
     }
     .button:hover { transform: translateY(-2px); }
     .button:focus-visible, .chip:focus-visible { outline: 3px solid #dca8c0; outline-offset: 3px; }
@@ -153,7 +210,9 @@
     }
     .button-primary:hover { box-shadow: 0 12px 24px rgba(217, 79, 131, .3); }
     .button-secondary { border-color: var(--line); color: #5d4f64; background: white; }
+    .button-secondary:hover { border-color: #e5c4d4; background: #fffafd; }
     .button-game { color: var(--purple); background: #f3efff; }
+    .button-game:hover { background: #ebe4ff; }
     .button[hidden] { display: none; }
     .status { min-height: 21px; margin: 14px 0 0; color: var(--pink-dark); font-size: 12px; }
 
@@ -161,14 +220,14 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-top: 20px;
+      margin-top: 22px;
       color: var(--muted);
       font-size: 12px;
     }
 
     @media (max-width: 560px) {
       body { padding: 18px 14px 32px; }
-      .topbar { margin-bottom: 42px; }
+      .topbar { margin-bottom: 39px; }
       .top-note { max-width: 145px; text-align: left; line-height: 1.5; }
       .intro p { max-width: 330px; margin-inline: auto; font-size: 14px; }
       .categories { padding: 21px 18px 19px; }
@@ -176,6 +235,8 @@
       .question-area { padding: 29px 17px 23px; }
       .question { min-height: 118px; }
       .button { flex: 1 1 145px; }
+      .intro-stats { gap: 6px; }
+      .intro-stat { padding: 7px 9px; font-size: 11px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -197,6 +258,11 @@
       <div class="eyebrow"><span aria-hidden="true">✦</span> لعبة أسئلة للكابلز</div>
       <h1 id="title">خلّوا الكلام يقربكم 💗</h1>
       <p>اختاروا تصنيف، اسحبوا سؤال، وخدوا وقتكم في الإجابة.</p>
+      <div class="intro-stats" aria-label="معلومات اللعبة">
+        <span class="intro-stat"><strong id="total-count"></strong> سؤال متنوع</span>
+        <span class="intro-stat"><strong>٥</strong> تصنيفات</span>
+        <span class="intro-stat">💌 العبوا على راحتكم</span>
+      </div>
     </section>
 
     <section class="game" aria-label="لعبة الأسئلة">
@@ -244,7 +310,24 @@
         "إيه الحاجة اللي بتحبها في ضحكتي؟",
         "لو كتبت لي رسالة حب دلوقتي، هتقول إيه؟",
         "إيه المكان اللي نفسك نروحه مع بعض؟",
-        "إيه أكتر حاجة بتفتقدها لما بكون بعيد؟"
+        "إيه أكتر حاجة بتفتقدها لما بكون بعيد؟",
+        "إيه تفصيلة صغيرة بعملها وبتفرّحك؟",
+        "إيه أغنية بتفكرك بيا؟",
+        "إمتى بتحس إننا أقرب لبعض؟",
+        "إيه أكتر حاجة بتحب نعملها سوا؟",
+        "لو هتختار لقب دلع ليا، هيكون إيه؟",
+        "إيه أكتر موقف حسّسك إني فاهمك؟",
+        "إيه شكل يوم مثالي نقضيه سوا؟",
+        "إيه أكتر صفة فيّ بتطمنك؟",
+        "إيه حاجة رومانسية بسيطة نفسك أعملها؟",
+        "إيه أكتر ذكرى بينا بتحب تحكيها؟",
+        "لو علاقتنا لون، تتخيل لونه إيه؟",
+        "إيه أكتر حاجة بتخليك تبتسم لما تفتكرني؟",
+        "إيه كلمة بتحب تسمعها مني؟",
+        "إمتى بتحس إنك متقدّر في علاقتنا؟",
+        "إيه مكان هادي تحب نقعد فيه ونتكلم؟",
+        "إيه حاجة جديدة تحب نجربها كموعد لطيف؟",
+        "لو هتوصف إحساسك معايا في جملة، هتقول إيه؟"
       ],
       "صعب": [
         "إيه أكتر حاجة بتضايقك فيّ ومش بتقولها؟",
@@ -253,7 +336,26 @@
         "إيه الحاجة اللي محتاج تغيرها في نفسك عشان العلاقة تنجح؟",
         "إيه أسوأ حاجة عملتها معايا وندمت عليها؟",
         "لو لازم تختار بيني وبين حلمك، هتختار إيه؟",
-        "إيه الحاجة اللي بتخاف إنك تقولها لي؟"
+        "إيه الحاجة اللي بتخاف إنك تقولها لي؟",
+        "إيه موضوع صعب محتاجين نتكلم فيه بهدوء؟",
+        "إيه التصرف اللي يخليك تحس إن رأيك مش مسموع؟",
+        "لما نزعل من بعض، إيه أحسن طريقة نتصالح بيها؟",
+        "إيه حدّ شخصي مهم بالنسبة لك وعايزني أحترمه؟",
+        "إيه حاجة بتحتاجها مني وقت الضغط ومش بتعرف تطلبها؟",
+        "إزاي نختلف من غير ما نجرح بعض؟",
+        "إيه اعتذار نفسك تسمعه أو تقوله؟",
+        "إيه معنى الثقة بالنسبالك؟",
+        "إيه موقف بتحس فيه إننا مش بنفهم بعض؟",
+        "إيه تغيير صغير ممكن يحسّن علاقتنا؟",
+        "إيه حاجة بتحب تحتفظ بيها لنفسك وعايزني أتفهمها؟",
+        "إزاي نوزن وقتنا بين علاقتنا واهتماماتنا الشخصية؟",
+        "إيه مسؤولية بينا محتاجة تتقسم بشكل أعدل؟",
+        "إيه نوع الدعم اللي بيفرق معاك لما تكون متضايق؟",
+        "إيه حاجة بتخليك تحس بالأمان وإنت بتتكلم بصراحة؟",
+        "إمتى بتحب تاخد مساحة لنفسك وإزاي تقول ده؟",
+        "إيه اختلاف بينا علّمك حاجة جديدة؟",
+        "إيه توقع محتاجين نوضحه لبعض؟",
+        "لو بدأنا صفحة جديدة في موضوع، إيه أول خطوة؟"
       ],
       "مضحك": [
         "لو كنت حيوان، كنت هتكون إيه وليه؟",
@@ -262,7 +364,27 @@
         "إيه أحلى حاجة عملتها وأنا نايم؟",
         "لو الأكل بيتكلم، إيه اللي كان هيقوله عن علاقتنا؟",
         "إيه أغبى حاجة اتخانقنا عليها؟",
-        "لو عندنا قناة يوتيوب، هتكون عن إيه؟"
+        "لو عندنا قناة يوتيوب، هتكون عن إيه؟",
+        "مين فينا هيعيش أطول لو اتحبسنا في جزيرة؟ وليه؟",
+        "لو أنا أكلة، هبقى أكلة إيه؟",
+        "إيه أكتر كلمة بقولها من غير ما آخد بالي؟",
+        "لو بدّلنا شخصياتنا يوم، أول حاجة هتعملها إيه؟",
+        "إيه موهبة غريبة تتمنى تكون عندك؟",
+        "مين فينا بياخد وقت أطول عشان يختار الأكل؟",
+        "لو عملنا فرقة موسيقية، هنسميها إيه؟",
+        "إيه أكتر موقف محرج ضحكنا عليه بعدين؟",
+        "لو هنشارك في مسابقة، هتبقى مسابقة إيه؟",
+        "مين فينا هيضحك الأول في موقف المفروض يبقى جاد؟",
+        "لو عندنا روبوت في البيت، أول مهمة هندهاله إيه؟",
+        "إيه أغرب اسم ممكن نسمي بيه نبتة عندنا؟",
+        "لو حياتنا لعبة فيديو، إيه المرحلة الأصعب؟",
+        "إيه تقليد مضحك ممكن نعمله كل أسبوع؟",
+        "مين فينا ممكن يضيع وهو فاتح الخريطة؟",
+        "لو طلبنا بيتزا غريبة، إيه المكونات اللي هتختارها؟",
+        "إيه صوت أو حركة بعملها وبتضحكك؟",
+        "لو هتديني جائزة طريفة، هتكون جائزة إيه؟",
+        "مين فينا هيكسب في مسابقة تمثيل من غير كلام؟",
+        "لو هنعيش في كرتون، تختار أنهي عالم؟"
       ],
       "مستقبل": [
         "شايف نفسك فين معايا بعد 5 سنين؟",
@@ -270,18 +392,59 @@
         "إيه الحلم اللي نفسك نحققه مع بعض؟",
         "لو هنعيش في بلد تاني، تحب تكون فين؟",
         "إيه اسم أول حاجة نفسك نربيها (طفل/حيوان)؟",
-        "إيه أهم حاجة عايز تبنيها في بيتنا؟"
+        "إيه أهم حاجة عايز تبنيها في بيتنا؟",
+        "إيه مهارة نفسك نتعلمها سوا؟",
+        "إيه رحلة نفسك نخطط لها السنة دي؟",
+        "إيه عادة حلوة تحب نبدأها مع بعض؟",
+        "إيه شكل البيت المريح بالنسبالك؟",
+        "إيه هدف شخصي تحب أساندك فيه؟",
+        "لو عندنا يوم إجازة كامل كل شهر، تحب نعمل فيه إيه؟",
+        "إيه تجربة جديدة نفسك نعيشها لأول مرة سوا؟",
+        "إزاي تتخيل توازننا بين الشغل والوقت الشخصي؟",
+        "إيه حاجة تحب نوفر لها أو نخطط لها مع بعض؟",
+        "إيه تقليد سنوي تتمنى يبقى خاص بينا؟",
+        "إيه مدينة أو مكان نفسك تكتشفه معايا؟",
+        "إيه مشروع صغير ممكن نستمتع إننا نعمله سوا؟",
+        "إيه صفة تحب نفضل نحافظ عليها في علاقتنا؟",
+        "لو خططنا لموعد بعد سنة من دلوقتي، تتمنى يكون فين؟",
+        "إيه حاجة تحب نحتفل بإنجازها مع بعض؟",
+        "إيه نوع المغامرات اللي نفسك تجربها؟",
+        "إيه خطوة تخلي حياتنا اليومية أهدى وأسعد؟",
+        "إيه موضوع تحب نتعلم عنه ونتكلم فيه سوا؟",
+        "لو كتبنا قائمة أمنيات مشتركة، إيه أول أمنية فيها؟",
+        "إيه ذكرى جديدة تتمنى نعملها قريب؟"
       ],
       "ذكريات": [
         "إيه أحلى ذكرى ليك معايا؟",
         "إيه أول انطباع خدته عني؟",
         "إيه أول هدية جبتها لي؟",
         "إيه الموقف اللي بتضحك عليه لحد دلوقتي؟",
-        "إيه أول مكان خرجنا فيه؟"
+        "إيه أول مكان خرجنا فيه؟",
+        "فاكر أول محادثة طويلة بينا كانت عن إيه؟",
+        "إيه أكتر يوم حسيت فيه إننا فريق واحد؟",
+        "إيه تفصيلة من أول مقابلة لسه فاكرها؟",
+        "إيه أكلة بتفكرك بوقت حلو قضيناه سوا؟",
+        "إيه صورة لينا بتحبها وإيه حكايتها؟",
+        "إيه موقف ساعدنا نتقرب من بعض؟",
+        "إيه أحلى مفاجأة حصلت بينا؟",
+        "إيه مكان زرناه ونفسك ترجعله؟",
+        "إيه حاجة اتعلمتها عني مع الوقت؟",
+        "إيه يوم عادي اتحول لذكرى مميزة؟",
+        "إيه موقف وقفنا فيه جنب بعض؟",
+        "إيه أكتر حاجة كانت بتضحكنا في بداية علاقتنا؟",
+        "إيه هدية بسيطة فاكرها لحد دلوقتي؟",
+        "إيه أول نشاط عملناه سوا؟",
+        "إيه تحدّي عدّيناه وخلانا أقوى؟",
+        "إيه مجاملة قلتها لي ولسه فاكرها؟",
+        "إيه تفصيلة من رحلة أو خروجة مبتتنسيش؟",
+        "إيه لحظة حسيت فيها بالفخر بيا؟",
+        "إيه موقف غيّر رأيك في حاجة للأحسن؟",
+        "إيه ذكرى صغيرة بتحب ترجع لها لما يومك يبقى طويل؟"
       ]
     };
 
     const categoryNames = ["الكل", ...Object.keys(questions)];
+    const totalQuestionCount = Object.values(questions).reduce((total, items) => total + items.length, 0);
     const categoryContainer = document.getElementById("categories");
     const categoryLabel = document.getElementById("category-label");
     const questionElement = document.getElementById("question");
@@ -293,6 +456,7 @@
     let currentQuestion = "";
     let roundQuestions = [];
     let roundIndex = -1;
+    document.getElementById("total-count").textContent = formatNumber(totalQuestionCount);
 
     function randomItem(items) {
       return items[Math.floor(Math.random() * items.length)];
@@ -313,7 +477,14 @@
         const button = document.createElement("button");
         button.className = "chip";
         button.type = "button";
-        button.textContent = category;
+        const label = document.createElement("span");
+        const count = document.createElement("span");
+        label.textContent = category;
+        count.className = "chip-count";
+        count.textContent = formatNumber(
+          category === "الكل" ? totalQuestionCount : questions[category].length
+        );
+        button.append(label, count);
         button.setAttribute("aria-pressed", String(category === selectedCategory));
         button.addEventListener("click", () => {
           selectedCategory = category;
@@ -354,7 +525,7 @@
     }
 
     function startRound() {
-      if (roundIndex === roundQuestions.length - 1) {
+      if (roundIndex >= 0 && roundIndex === roundQuestions.length - 1) {
         roundQuestions = [];
         roundIndex = -1;
       }
@@ -376,7 +547,7 @@
         displayQuestion(roundQuestions[roundIndex], `${formatNumber(roundIndex + 1)} / ${formatNumber(roundQuestions.length)}`);
         return;
       }
-      if (roundIndex === roundQuestions.length - 1) {
+      if (roundIndex >= 0 && roundIndex === roundQuestions.length - 1) {
         roundIndex = -1;
         roundQuestions = [];
         roundButton.textContent = "✦ ابدأوا جولة ٥ أسئلة";
