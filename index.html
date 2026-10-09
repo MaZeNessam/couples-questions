@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff8fb">
+  <meta name="theme-color" content="#f6f4ef">
   <meta name="description" content="أسئلة لطيفة وممتعة تقرّبكم من بعض. اختاروا تصنيف وابدأوا اللعب سوا.">
   <title>بيننا | أسئلة للكابلز</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #36263e;
-      --muted: #85788d;
-      --pink: #d94f83;
-      --pink-dark: #bd3c70;
-      --pink-soft: #fff0f5;
-      --purple: #7457a6;
-      --line: #eee4eb;
+      --ink: #1c2d43;
+      --muted: #748092;
+      --gold: #b18a49;
+      --gold-dark: #8e6d36;
+      --gold-soft: #f5f0e6;
+      --blue-soft: #edf1f5;
+      --line: #e9e5dc;
       --surface: rgba(255, 255, 255, .92);
-      --shadow: 0 26px 80px rgba(72, 43, 69, .12);
+      --shadow: 0 26px 80px rgba(28, 45, 67, .12);
     }
 
     * { box-sizing: border-box; }
@@ -30,9 +30,9 @@
       color: var(--ink);
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       background:
-        radial-gradient(ellipse at 7% 8%, rgba(255, 201, 222, .48), transparent 29rem),
-        radial-gradient(ellipse at 93% 76%, rgba(220, 211, 255, .42), transparent 33rem),
-        linear-gradient(145deg, #fffafd, #fff7fa 55%, #fbf8ff);
+        radial-gradient(ellipse at 7% 8%, rgba(207, 185, 139, .2), transparent 29rem),
+        radial-gradient(ellipse at 93% 76%, rgba(178, 192, 207, .25), transparent 33rem),
+        linear-gradient(145deg, #fbfaf7, #f6f4ef 55%, #f1f3f4);
     }
 
     button { font: inherit; }
@@ -54,8 +54,8 @@
       place-items: center;
       border-radius: 15px;
       color: white;
-      background: linear-gradient(145deg, #ed78a1, #c84f89);
-      box-shadow: 0 8px 20px rgba(217, 79, 131, .24);
+      background: linear-gradient(145deg, #bd9b60, #98743a);
+      box-shadow: 0 8px 20px rgba(142, 109, 54, .22);
       font-size: 20px;
     }
     .brand-name { font-size: 17px; letter-spacing: -.3px; }
@@ -68,15 +68,16 @@
       gap: 7px;
       margin-bottom: 13px;
       padding: 8px 13px;
-      border: 1px solid #f5dce7;
+      border: 1px solid #e8ddc7;
       border-radius: 99px;
-      color: var(--pink-dark);
+      color: var(--gold-dark);
       background: rgba(255, 255, 255, .82);
       font-size: 12px;
       font-weight: 700;
-      box-shadow: 0 5px 18px rgba(146, 83, 117, .06);
+      box-shadow: 0 5px 18px rgba(28, 45, 67, .06);
     }
     h1 { margin: 0; font-size: clamp(32px, 6vw, 52px); letter-spacing: -1.8px; line-height: 1.2; }
+    h1 span { color: var(--gold); }
     .intro p { margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
     .intro-stats {
       display: flex;
@@ -89,13 +90,13 @@
       align-items: center;
       gap: 7px;
       padding: 8px 12px;
-      border: 1px solid rgba(238, 228, 235, .88);
+      border: 1px solid rgba(233, 229, 220, .9);
       border-radius: 99px;
-      color: #66576d;
+      color: #59677a;
       background: rgba(255, 255, 255, .7);
       font-size: 12px;
     }
-    .intro-stat strong { color: var(--pink-dark); font-size: 13px; }
+    .intro-stat strong { color: var(--gold-dark); font-size: 13px; }
 
     .game {
       overflow: hidden;
@@ -109,7 +110,7 @@
       display: block;
       height: 4px;
       content: "";
-      background: linear-gradient(90deg, #b39ae5, #e989ad 48%, #f3bb9b);
+      background: linear-gradient(90deg, #d8c39a, #b18a49 48%, #d8c39a);
     }
 
     .categories { padding: 25px 30px 23px; border-bottom: 1px solid var(--line); }
@@ -124,26 +125,26 @@
       padding: 9px 13px;
       border: 1px solid var(--line);
       border-radius: 99px;
-      color: #695b70;
+      color: #536176;
       background: #fff;
       cursor: pointer;
       font-size: 13px;
       font-weight: 650;
       transition: color .18s, background .18s, border-color .18s, transform .18s, box-shadow .18s;
     }
-    .chip:hover { transform: translateY(-1px); border-color: #e8bdd0; }
+    .chip:hover { transform: translateY(-1px); border-color: #cbb78f; }
     .chip[aria-pressed="true"] {
-      border-color: var(--pink);
+      border-color: var(--gold);
       color: white;
-      background: linear-gradient(135deg, #e86f99, #ce4e85);
-      box-shadow: 0 6px 15px rgba(217, 79, 131, .2);
+      background: linear-gradient(135deg, #263c57, #172a42);
+      box-shadow: 0 6px 15px rgba(28, 45, 67, .18);
     }
     .chip-count {
       min-width: 21px;
       padding: 2px 5px;
       border-radius: 99px;
-      color: #927e94;
-      background: #f7f2f6;
+      color: #82704c;
+      background: #f4efe4;
       font-size: 10px;
       text-align: center;
     }
@@ -154,8 +155,8 @@
     .category-label {
       padding: 6px 11px;
       border-radius: 99px;
-      color: var(--purple);
-      background: #f3efff;
+      color: #49627d;
+      background: var(--blue-soft);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: .1px;
@@ -167,11 +168,11 @@
       height: 48px;
       place-items: center;
       margin: 17px auto 8px;
-      border: 1px solid #f6e3eb;
+      border: 1px solid #e9dfcd;
       border-radius: 17px;
-      color: #df739a;
-      background: linear-gradient(145deg, #fff6f9, #fff);
-      box-shadow: 0 7px 20px rgba(186, 107, 141, .09);
+      color: var(--gold);
+      background: linear-gradient(145deg, #fbf8f1, #fff);
+      box-shadow: 0 7px 20px rgba(142, 109, 54, .09);
       font-size: 23px;
     }
     .question {
@@ -202,19 +203,19 @@
       transition: transform .18s, box-shadow .18s, background .18s, border-color .18s;
     }
     .button:hover { transform: translateY(-2px); }
-    .button:focus-visible, .chip:focus-visible { outline: 3px solid #dca8c0; outline-offset: 3px; }
+    .button:focus-visible, .chip:focus-visible { outline: 3px solid #cbb78f; outline-offset: 3px; }
     .button-primary {
       color: white;
-      background: linear-gradient(135deg, #e86f99, #ce4e85);
-      box-shadow: 0 9px 20px rgba(217, 79, 131, .2);
+      background: linear-gradient(135deg, #263c57, #172a42);
+      box-shadow: 0 9px 20px rgba(28, 45, 67, .2);
     }
-    .button-primary:hover { box-shadow: 0 12px 24px rgba(217, 79, 131, .3); }
-    .button-secondary { border-color: var(--line); color: #5d4f64; background: white; }
-    .button-secondary:hover { border-color: #e5c4d4; background: #fffafd; }
-    .button-game { color: var(--purple); background: #f3efff; }
-    .button-game:hover { background: #ebe4ff; }
+    .button-primary:hover { box-shadow: 0 12px 24px rgba(28, 45, 67, .28); }
+    .button-secondary { border-color: var(--line); color: #43536a; background: white; }
+    .button-secondary:hover { border-color: #cbb78f; background: #fbf9f4; }
+    .button-game { color: var(--gold-dark); background: var(--gold-soft); }
+    .button-game:hover { background: #eee5d2; }
     .button[hidden] { display: none; }
-    .status { min-height: 21px; margin: 14px 0 0; color: var(--pink-dark); font-size: 12px; }
+    .status { min-height: 21px; margin: 14px 0 0; color: var(--gold-dark); font-size: 12px; }
 
     .footer {
       display: flex;
@@ -256,7 +257,7 @@
 
     <section class="intro" aria-labelledby="title">
       <div class="eyebrow"><span aria-hidden="true">✦</span> لعبة أسئلة للكابلز</div>
-      <h1 id="title">خلّوا الكلام يقربكم 💗</h1>
+      <h1 id="title">خلّوا الكلام يقربكم <span>♡</span></h1>
       <p>اختاروا تصنيف، اسحبوا سؤال، وخدوا وقتكم في الإجابة.</p>
       <div class="intro-stats" aria-label="معلومات اللعبة">
         <span class="intro-stat"><strong id="total-count"></strong> سؤال متنوع</span>
