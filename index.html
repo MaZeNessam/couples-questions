@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8fb">
+  <meta name="description" content="أسئلة لطيفة وممتعة تقرّبكم من بعض. اختاروا تصنيف وابدأوا اللعب سوا.">
+  <title>بيننا | أسئلة للكابلز</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #36263e;
+      --muted: #85788d;
+      --pink: #d94f83;
+      --pink-dark: #bd3c70;
+      --pink-soft: #fff0f5;
+      --purple: #7457a6;
+      --line: #f0e5ed;
+      --surface: rgba(255, 255, 255, .88);
+      --shadow: 0 24px 80px rgba(92, 55, 86, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      padding: 28px 20px 44px;
+      color: var(--ink);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 8% 12%, rgba(255, 201, 222, .5), transparent 31rem),
+        radial-gradient(ellipse at 92% 80%, rgba(220, 211, 255, .46), transparent 34rem),
+        #fff9fc;
+    }
+
+    button { font: inherit; }
+
+    .page { width: min(100%, 860px); margin: 0 auto; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 58px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 15px;
+      color: white;
+      background: linear-gradient(145deg, #ed78a1, #c84f89);
+      box-shadow: 0 8px 20px rgba(217, 79, 131, .24);
+      font-size: 20px;
+    }
+    .brand-name { font-size: 17px; letter-spacing: -.3px; }
+    .top-note { color: var(--muted); font-size: 13px; }
+
+    .intro { margin-bottom: 30px; text-align: center; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 13px;
+      padding: 8px 13px;
+      border: 1px solid #f5dce7;
+      border-radius: 99px;
+      color: var(--pink-dark);
+      background: rgba(255, 255, 255, .72);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    h1 { margin: 0; font-size: clamp(32px, 6vw, 52px); letter-spacing: -1.8px; line-height: 1.2; }
+    .intro p { margin: 13px 0 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+
+    .game {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .categories { padding: 25px 28px 22px; border-bottom: 1px solid var(--line); }
+    .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .section-heading h2 { margin: 0; font-size: 15px; }
+    .section-heading span { color: var(--muted); font-size: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+    .chip {
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: #695b70;
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      transition: color .18s, background .18s, border-color .18s, transform .18s;
+    }
+    .chip:hover { transform: translateY(-1px); border-color: #e8bdd0; }
+    .chip[aria-pressed="true"] { border-color: var(--pink); color: white; background: var(--pink); }
+
+    .question-area { padding: 34px 36px 30px; text-align: center; }
+    .question-meta { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 28px; }
+    .category-label {
+      padding: 6px 11px;
+      border-radius: 99px;
+      color: var(--purple);
+      background: #f3efff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .progress { color: var(--muted); font-size: 12px; }
+    .heart { margin: 17px 0 5px; color: #e785a8; font-size: 23px; }
+    .question {
+      max-width: 660px;
+      min-height: 100px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto;
+      font-size: clamp(23px, 4.4vw, 34px);
+      font-weight: 750;
+      letter-spacing: -.65px;
+      line-height: 1.7;
+    }
+    .prompt { margin: 5px 0 23px; color: var(--muted); font-size: 13px; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button:focus-visible, .chip:focus-visible { outline: 3px solid #dca8c0; outline-offset: 3px; }
+    .button-primary {
+      color: white;
+      background: linear-gradient(135deg, #e86f99, #ce4e85);
+      box-shadow: 0 9px 20px rgba(217, 79, 131, .2);
+    }
+    .button-primary:hover { box-shadow: 0 12px 24px rgba(217, 79, 131, .3); }
+    .button-secondary { border-color: var(--line); color: #5d4f64; background: white; }
+    .button-game { color: var(--purple); background: #f3efff; }
+    .button[hidden] { display: none; }
+    .status { min-height: 21px; margin: 14px 0 0; color: var(--pink-dark); font-size: 12px; }
+
+    .footer {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 18px 14px 32px; }
+      .topbar { margin-bottom: 42px; }
+      .top-note { max-width: 145px; text-align: left; line-height: 1.5; }
+      .intro p { max-width: 330px; margin-inline: auto; font-size: 14px; }
+      .categories { padding: 21px 18px 19px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .question-area { padding: 29px 17px 23px; }
+      .question { min-height: 118px; }
+      .button { flex: 1 1 145px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">♡</span>
+        <span class="brand-name">بيننا</span>
+      </div>
+      <span class="top-note">لحظات حلوة تبدأ بسؤال 💌</span>
+    </header>
+
+    <section class="intro" aria-labelledby="title">
+      <div class="eyebrow"><span aria-hidden="true">✦</span> لعبة أسئلة للكابلز</div>
+      <h1 id="title">خلّوا الكلام يقربكم 💗</h1>
+      <p>اختاروا تصنيف، اسحبوا سؤال، وخدوا وقتكم في الإجابة.</p>
+    </section>
+
+    <section class="game" aria-label="لعبة الأسئلة">
+      <div class="categories">
+        <div class="section-heading">
+          <h2>نبدأ منين؟</h2>
+          <span>اختاروا مودكم النهارده</span>
+        </div>
+        <div class="chips" id="categories" role="group" aria-label="تصنيفات الأسئلة"></div>
+      </div>
+
+      <div class="question-area" aria-live="polite">
+        <div class="question-meta">
+          <span class="category-label" id="category-label"></span>
+          <span class="progress" id="progress"></span>
+        </div>
+        <div class="heart" aria-hidden="true">♡</div>
+        <p class="question" id="question"></p>
+        <p class="prompt" id="prompt">مفيش إجابة صح أو غلط — اسمعوا بعض وبس.</p>
+        <div class="actions">
+          <button class="button button-primary" id="next-button" type="button">
+            <span aria-hidden="true">↻</span> سؤال تاني
+          </button>
+          <button class="button button-secondary" id="share-button" type="button" aria-label="ابعت السؤال على واتساب">
+            <span aria-hidden="true">↗</span> ابعت السؤال
+          </button>
+          <button class="button button-game" id="round-button" type="button">
+            <span aria-hidden="true">✦</span> ابدأوا جولة ٥ أسئلة
+          </button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+      </div>
+    </section>
+
+    <footer class="footer"><span aria-hidden="true">♡</span> معمولة عشان وقتكم سوا يبقى أحلى</footer>
+  </main>
+
+  <script>
+    const questions = {
+      "رومانسي": [
+        "إيه أول حاجة جذبتك فيّ؟",
+        "إيه أكتر لحظة حسيت فيها إنك بتحبني؟",
+        "لو تقدر تعيد لحظة واحدة معايا، هتختار إيه؟",
+        "إيه أحلى كومبليمت سمعته مني؟",
+        "إيه الحاجة اللي بتحبها في ضحكتي؟",
+        "لو كتبت لي رسالة حب دلوقتي، هتقول إيه؟",
+        "إيه المكان اللي نفسك نروحه مع بعض؟",
+        "إيه أكتر حاجة بتفتقدها لما بكون بعيد؟"
+      ],
+      "صعب": [
+        "إيه أكتر حاجة بتضايقك فيّ ومش بتقولها؟",
+        "لو رجع بيك الزمن، هتغير إيه في علاقتنا؟",
+        "إيه أكبر خوف عندك في العلاقة دي؟",
+        "إيه الحاجة اللي محتاج تغيرها في نفسك عشان العلاقة تنجح؟",
+        "إيه أسوأ حاجة عملتها معايا وندمت عليها؟",
+        "لو لازم تختار بيني وبين حلمك، هتختار إيه؟",
+        "إيه الحاجة اللي بتخاف إنك تقولها لي؟"
+      ],
+      "مضحك": [
+        "لو كنت حيوان، كنت هتكون إيه وليه؟",
+        "إيه أغرب حاجة عملتها وأنا مش شايف؟",
+        "لو بقينا في فيلم، اسمه هيكون إيه؟",
+        "إيه أحلى حاجة عملتها وأنا نايم؟",
+        "لو الأكل بيتكلم، إيه اللي كان هيقوله عن علاقتنا؟",
+        "إيه أغبى حاجة اتخانقنا عليها؟",
+        "لو عندنا قناة يوتيوب، هتكون عن إيه؟"
+      ],
+      "مستقبل": [
+        "شايف نفسك فين معايا بعد 5 سنين؟",
+        "إيه أول حاجة نفسك نعملها سوا؟",
+        "إيه الحلم اللي نفسك نحققه مع بعض؟",
+        "لو هنعيش في بلد تاني، تحب تكون فين؟",
+        "إيه اسم أول حاجة نفسك نربيها (طفل/حيوان)؟",
+        "إيه أهم حاجة عايز تبنيها في بيتنا؟"
+      ],
+      "ذكريات": [
+        "إيه أحلى ذكرى ليك معايا؟",
+        "إيه أول انطباع خدته عني؟",
+        "إيه أول هدية جبتها لي؟",
+        "إيه الموقف اللي بتضحك عليه لحد دلوقتي؟",
+        "إيه أول مكان خرجنا فيه؟"
+      ]
+    };
+
+    const categoryNames = ["الكل", ...Object.keys(questions)];
+    const categoryContainer = document.getElementById("categories");
+    const categoryLabel = document.getElementById("category-label");
+    const questionElement = document.getElementById("question");
+    const progressElement = document.getElementById("progress");
+    const promptElement = document.getElementById("prompt");
+    const statusElement = document.getElementById("status");
+    const roundButton = document.getElementById("round-button");
+    let selectedCategory = "الكل";
+    let currentQuestion = "";
+    let roundQuestions = [];
+    let roundIndex = -1;
+
+    function randomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
+    }
+
+    function getAvailableQuestions() {
+      if (selectedCategory !== "الكل") {
+        return questions[selectedCategory].map((text) => ({ text, category: selectedCategory }));
+      }
+      return Object.entries(questions).flatMap(([category, items]) =>
+        items.map((text) => ({ text, category }))
+      );
+    }
+
+    function renderCategories() {
+      categoryContainer.replaceChildren();
+      categoryNames.forEach((category) => {
+        const button = document.createElement("button");
+        button.className = "chip";
+        button.type = "button";
+        button.textContent = category;
+        button.setAttribute("aria-pressed", String(category === selectedCategory));
+        button.addEventListener("click", () => {
+          selectedCategory = category;
+          roundQuestions = [];
+          roundIndex = -1;
+          roundButton.textContent = "✦ ابدأوا جولة ٥ أسئلة";
+          promptElement.textContent = "مفيش إجابة صح أو غلط — اسمعوا بعض وبس.";
+          statusElement.textContent = "";
+          renderCategories();
+          showRandomQuestion();
+        });
+        categoryContainer.append(button);
+      });
+    }
+
+    function displayQuestion(item, progressText = "") {
+      currentQuestion = item.text;
+      questionElement.textContent = item.text;
+      categoryLabel.textContent = item.category;
+      progressElement.textContent = progressText;
+      statusElement.textContent = "";
+    }
+
+    function formatNumber(number) {
+      return new Intl.NumberFormat("ar-EG").format(number);
+    }
+
+    function showRandomQuestion() {
+      const available = getAvailableQuestions();
+      let item = randomItem(available);
+      if (available.length > 1) {
+        while (item.text === currentQuestion) item = randomItem(available);
+      }
+      displayQuestion(item);
+      const url = new URL(window.location.href);
+      url.searchParams.delete("q");
+      window.history.replaceState({}, "", url);
+    }
+
+    function startRound() {
+      if (roundIndex === roundQuestions.length - 1) {
+        roundQuestions = [];
+        roundIndex = -1;
+      }
+      const available = getAvailableQuestions();
+      for (let i = available.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [available[i], available[j]] = [available[j], available[i]];
+      }
+      roundQuestions = available.slice(0, 5);
+      roundIndex = 0;
+      promptElement.textContent = "جاوبوا بالتبادل وخدوا وقتكم مع كل سؤال 💕";
+      roundButton.textContent = "السؤال التالي في الجولة";
+      displayQuestion(roundQuestions[roundIndex], `${formatNumber(roundIndex + 1)} / ${formatNumber(roundQuestions.length)}`);
+    }
+
+    function nextQuestion() {
+      if (roundIndex >= 0 && roundIndex < roundQuestions.length - 1) {
+        roundIndex += 1;
+        displayQuestion(roundQuestions[roundIndex], `${formatNumber(roundIndex + 1)} / ${formatNumber(roundQuestions.length)}`);
+        return;
+      }
+      if (roundIndex === roundQuestions.length - 1) {
+        roundIndex = -1;
+        roundQuestions = [];
+        roundButton.textContent = "✦ ابدأوا جولة ٥ أسئلة";
+        progressElement.textContent = "";
+        questionElement.textContent = "كده خلّصتوا الجولة! 💗";
+        categoryLabel.textContent = "برافو عليكم";
+        promptElement.textContent = "تحبوا تبدأوا جولة جديدة ولا تكملوا أسئلة عشوائية؟";
+        return;
+      }
+      showRandomQuestion();
+    }
+
+    async function shareQuestion() {
+      const isLocalFile = window.location.protocol === "file:";
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", currentQuestion);
+      const message = isLocalFile
+        ? currentQuestion
+        : `${currentQuestion}\n\nالعبوا معايا: ${url.href}`;
+      const shareData = { title: "سؤال من لعبة بيننا", text: message };
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+          statusElement.textContent = "اختار التطبيق أو الشخص اللي هتبعتله السؤال 💌";
+        } else {
+          const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+          const shareWindow = window.open(whatsappUrl, "_blank");
+          if (shareWindow) {
+            shareWindow.opener = null;
+            statusElement.textContent = "واتساب اتفتح — اختار الشخص واضغط إرسال 💌";
+            return;
+          }
+          await copyShareMessage(message);
+          statusElement.textContent = "انسخنا السؤال — ابعته في واتساب أو أي تطبيق تاني 💌";
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          statusElement.textContent = "تعذرت المشاركة. جرّب الضغط على الزر مرة تانية.";
+        }
+      }
+    }
+
+    async function copyShareMessage(message) {
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(message);
+          return;
+        } catch {
+          // Fall back when clipboard permission is unavailable in the current browser.
+        }
+      }
+      const textArea = document.createElement("textarea");
+      textArea.value = message;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.append(textArea);
+      textArea.select();
+      const copied = document.execCommand("copy");
+      textArea.remove();
+      if (!copied) window.prompt("انسخ السؤال وابعته:", message);
+    }
+
+    roundButton.addEventListener("click", () => {
+      if (roundIndex >= 0) nextQuestion();
+      else startRound();
+    });
+    document.getElementById("next-button").addEventListener("click", nextQuestion);
+    document.getElementById("share-button").addEventListener("click", shareQuestion);
+
+    renderCategories();
+    const sharedQuestion = new URLSearchParams(window.location.search).get("q");
+    if (sharedQuestion) {
+      const match = Object.entries(questions).find(([, items]) => items.includes(sharedQuestion));
+      displayQuestion({
+        text: sharedQuestion,
+        category: match ? match[0] : "سؤال متشارك"
+      });
+    } else {
+      showRandomQuestion();
+    }
+  </script>
+</body>
+</html>
